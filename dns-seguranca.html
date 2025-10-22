@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DNS e Segurança • Domínio do Site</title>
+    <meta name="description" content="Registros DNS, TTL, DNSSEC, HSTS, CSP e boas práticas para manter seu domínio e site seguros." />
+    <link rel="canonical" href="https://dominiodosite.com.br/dns-seguranca" />
+    <meta name="robots" content="index,follow" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:wght@700&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="%23c51917"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="34" font-family="Inter, Arial, sans-serif" fill="white">D</text></svg>' />
+    <style>
+      :root{--brand:#c51917;--ink:#121212;--ink-2:#343a40;--bg:#ffffff;--muted:#f5f5f7;--border:#e6e6ea}
+      *{box-sizing:border-box}
+      html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+      a{color:inherit;text-decoration:none}
+      .container{max-width:920px;margin:0 auto;padding:0 16px}
+      .topbar{background:var(--brand);color:#fff}
+      .topbar-inner{display:flex;align-items:center;justify-content:space-between;height:56px}
+      .brand{display:flex;align-items:center;font-family:Merriweather,Georgia,serif;font-weight:700;font-size:22px}
+      .brand-badge{width:28px;height:28px;border-radius:6px;background:#fff;color:var(--brand);display:inline-flex;align-items:center;justify-content:center;font-weight:800;margin-right:10px}
+      nav ul{list-style:none;display:flex;gap:18px;margin:0;padding:0}
+      nav a{padding:6px 8px;border-radius:6px;transition:background-color .2s}
+      nav a:hover{background:rgba(255,255,255,.12)}
+      main{padding:22px 0}
+      h1{font-family:Merriweather,Georgia,serif;font-size:34px;margin:0 0 6px}
+      .lead{color:#555;margin:0 0 18px}
+      h2{font-family:Merriweather,Georgia,serif;font-size:22px;margin:26px 0 10px}
+      ul{padding-left:20px}
+      li{margin:6px 0}
+      .code{font-family:ui-monospace,Menlo,Consolas,monospace;background:var(--muted);border:1px solid var(--border);padding:10px;border-radius:8px}
+      .foot{border-top:1px solid var(--border);margin-top:28px;padding-top:14px;color:#6b7280}
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <a class="brand" href="/index.html"><span class="brand-badge">D</span> Domínio do Site</a>
+        <nav>
+          <ul>
+            <li><a href="/dominios.html">Domínios</a></li>
+            <li><a href="/hospedagem.html">Hospedagem</a></li>
+            <li><a href="/dns-seguranca.html" aria-current="page">DNS & Segurança</a></li>
+            <li><a href="/email-profissional.html">E‑mail</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <h1>DNS e Segurança</h1>
+      <p class="lead">Entenda o papel de registros, TTL e políticas modernas para manter seu domínio resolvendo rápido e com o menor risco possível.</p>
+
+      <h2>Registros essenciais</h2>
+      <ul>
+        <li><strong>A/AAAA:</strong> aponta para IPv4/IPv6 do seu servidor.</li>
+        <li><strong>CNAME:</strong> alias para outro nome; não use na raiz do domínio.</li>
+        <li><strong>MX:</strong> define provedores de e‑mail e prioridade.</li>
+        <li><strong>TXT:</strong> verificação (propriedade, SPF, DKIM, DMARC).</li>
+      </ul>
+
+      <h2>TTLs e propagação</h2>
+      <p>Valores menores agilizam mudanças, mas aumentam consultas aos servidores autoritativos. Para registros críticos (MX, NS), use TTls mais altos após estabilizar.</p>
+
+      <h2>DNSSEC</h2>
+      <p>Ative no registrador e publique DS correto na zona. Valide com ferramentas públicas e monitore quebras após trocas de chave (KSK/ZSK).</p>
+
+      <h2>Políticas de navegador e servidor</h2>
+      <div class="code">
+        Exemplo de cabeçalhos importantes:<br/>
+        Strict-Transport-Security: max-age=31536000; includeSubDomains; preload<br/>
+        Content-Security-Policy: default-src 'self'<br/>
+        X-Content-Type-Options: nosniff
+      </div>
+
+      <div class="foot">Última atualização: <time datetime="2025-07-01">julho/2025</time></div>
+    </main>
+  </body>
+</html>

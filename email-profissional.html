@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>E‑mail Profissional • Domínio do Site</title>
+    <meta name="description" content="Como configurar e autenticar e‑mail no seu domínio: SPF, DKIM, DMARC, caixas postais, aliases e entrega confiável." />
+    <link rel="canonical" href="https://dominiodosite.com.br/email-profissional" />
+    <meta name="robots" content="index,follow" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:wght@700&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="%23c51917"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="34" font-family="Inter, Arial, sans-serif" fill="white">D</text></svg>' />
+    <style>
+      :root{--brand:#c51917;--ink:#121212;--ink-2:#343a40;--bg:#ffffff;--muted:#f5f5f7;--border:#e6e6ea}
+      *{box-sizing:border-box}
+      html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+      a{color:inherit;text-decoration:none}
+      .container{max-width:920px;margin:0 auto;padding:0 16px}
+      .topbar{background:var(--brand);color:#fff}
+      .topbar-inner{display:flex;align-items:center;justify-content:space-between;height:56px}
+      .brand{display:flex;align-items:center;font-family:Merriweather,Georgia,serif;font-weight:700;font-size:22px}
+      .brand-badge{width:28px;height:28px;border-radius:6px;background:#fff;color:var(--brand);display:inline-flex;align-items:center;justify-content:center;font-weight:800;margin-right:10px}
+      nav ul{list-style:none;display:flex;gap:18px;margin:0;padding:0}
+      nav a{padding:6px 8px;border-radius:6px;transition:background-color .2s}
+      nav a:hover{background:rgba(255,255,255,.12)}
+      main{padding:22px 0}
+      h1{font-family:Merriweather,Georgia,serif;font-size:34px;margin:0 0 6px}
+      .lead{color:#555;margin:0 0 18px}
+      h2{font-family:Merriweather,Georgia,serif;font-size:22px;margin:26px 0 10px}
+      ul{padding-left:20px}
+      li{margin:6px 0}
+      .tip{background:var(--muted);border:1px solid var(--border);padding:12px 14px;border-radius:10px}
+      .foot{border-top:1px solid var(--border);margin-top:28px;padding-top:14px;color:#6b7280}
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <a class="brand" href="/index.html"><span class="brand-badge">D</span> Domínio do Site</a>
+        <nav>
+          <ul>
+            <li><a href="/dominios.html">Domínios</a></li>
+            <li><a href="/hospedagem.html">Hospedagem</a></li>
+            <li><a href="/dns-seguranca.html">DNS & Segurança</a></li>
+            <li><a href="/email-profissional.html" aria-current="page">E‑mail</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <h1>E‑mail no seu domínio</h1>
+      <p class="lead">Configuração básica a avançada para ter entregabilidade confiável e reduzir falsificação de remetente.</p>
+
+      <h2>Caixas, aliases e roteamento</h2>
+      <ul>
+        <li><strong>Caixas postais:</strong> contas reais (ex.: contato@, suporte@).</li>
+        <li><strong>Aliases:</strong> redirecionamentos sem caixa (ex.: imprensa@ → marketing@).</li>
+        <li><strong>Roteamento:</strong> MX com prioridade e serviços de proteção anti‑spam.</li>
+      </ul>
+
+      <h2>SPF</h2>
+      <p>Regra TXT listando servidores autorizados a enviar em nome do seu domínio. Comece simples e evite “include” em excesso. Exemplo:</p>
+      <pre class="tip">v=spf1 include:_spf.seuprovedor.com -all</pre>
+
+      <h2>DKIM</h2>
+      <p>Assinatura criptográfica no cabeçalho, conferida pelo destinatário. Publique a chave pública via registro TXT (selector._domainkey).</p>
+
+      <h2>DMARC</h2>
+      <p>Política que instrui o que fazer quando SPF/DKIM falham. Comece com <code>p=none</code> e reporte; depois evolua para <code>quarantine</code> e <code>reject</code>.</p>
+
+      <div class="foot">Última atualização: <time datetime="2025-07-01">julho/2025</time></div>
+    </main>
+  </body>
+</html>
